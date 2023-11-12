@@ -1,6 +1,6 @@
 # Web app: Picture book project
 ## 簡述
-參考連結：https://storybird.com
+參考連結：1. https://storybird.com 2. https://storybird.ai/
 * 透過拖拉的方式來拼湊圖庫裡的資源製作繪本或電子書
 * 製作完後可分享給他人
 ## 期末要求
