@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/intro_img.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
@@ -16,14 +16,13 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+             <span className="purple"> INTRODUCTION </span>
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+              PixieTales is a creative haven where users collaborate seamlessly with AI to craft enchanting picture books. 
               <br />
-              <br />I am fluent in classics like
-              <i>
+              <br />With an intuitive interface and a palette of AI-powered tools, you can bring their stories to life through vibrant illustrations, personalized characters, and captivating narratives. 🤷‍♂️
+              {/* <i>
                 <b className="purple"> C++, Javascript and Go. </b>
               </i>
               <br />
@@ -34,21 +33,20 @@ function Home2() {
                 also in areas related to{" "}
                 <b className="purple">
                   Blockchain.
-                </b>
-              </i>
+                </b> */}
+              {/* </i> */}
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
+              Join ImagineTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 
               <i>
                 <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
+                  {"  "}
+                  
                 </b>
               </i>
-              &nbsp; like
+              &nbsp;
               <i>
-                <b className="purple"> React.js and Next.js</b>
+                <b className="purple">#PixieTales #CreateWithAI #PictureBookMagic</b>
               </i>
             </p>
           </Col>
@@ -60,7 +58,7 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
+            <h1>FIND Authur ON</h1>
             <p>
               Feel free to <span className="purple">connect </span>with me
             </p>
