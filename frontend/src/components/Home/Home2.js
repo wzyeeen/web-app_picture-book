@@ -37,10 +37,10 @@ function Home2() {
               {/* </i> */}
               <br />
               <br />
-              Join ImagineTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 
+              Join ImagineTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 <br />
               <i>
                 <b className="purple">
-                  {"  "}
+                  {""}
                   
                 </b>
               </i>
