@@ -473,6 +473,23 @@ button:focus {
   box-shadow: 0 4px 4px 5px #316639 !important;
 }
 
+.book-card {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+  height: auto !important;
+}
+
+.book-card-view {
+  box-shadow: 0 4px 5px 3px #316639 !important;
+  color: #658754 !important;
+  background-color: #faf2dd !important;
+  opacity: 0.9 !important;
+  transition: all 0.5s ease 0s !important;
+  height: 100% !important;
+}
+
 .blog-card {
   padding-top: 50px !important;
   padding-bottom: 50px !important;
@@ -517,7 +534,7 @@ button:focus {
 }
 
 .btn-primary {
-  color: #fff !important;
+  color: #316639 !important;
   background-color: #FFE7A4 !important;
   border-color: #316639 !important;
 }

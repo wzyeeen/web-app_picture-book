@@ -8,6 +8,7 @@ import Create from "./components/Create/Create";
 import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
+import Story from "./components/Story/Story";
 import {
   BrowserRouter as Router,
   Route,
@@ -44,6 +45,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="/story" element={<Story/>} />
         </Routes>
         <Footer />
       </div>

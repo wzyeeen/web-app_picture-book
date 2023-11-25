@@ -2,7 +2,7 @@ import * as React from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-
+import Textarea from '@mui/joy/Textarea';
 
 function Create(props) {
     return (
@@ -23,7 +23,7 @@ function Create(props) {
         <div className="bg-orange-100 bg-opacity-80 self-center flex max-w-full flex-col mt-16 pt-10 pb-12 rounded-2xl">
           <div className="self-stretch flex flex-col items-stretch mt-12 mb-4 px-10 max-md:mt-10 max-md:px-5">
             <div className="flex w-full max-w-full items-stretch gap-1.5 mt-1.5 max-md:justify-center">
-                <textarea
+                <Textarea name="Soft" variant="soft" required size="lg" minRows={4}
                 type="text"
                 placeholder="Story Prompt"
                 className="form-control border-20 border-solid border-emerald-950 rounded-l-md p-2 flex-grow w-full h-12"

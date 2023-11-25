@@ -2,7 +2,6 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
-import { BsGithub } from "react-icons/bs";
 
 function StyleCards(props) {
   return (
@@ -26,12 +25,12 @@ function StyleCards(props) {
         { (
           <Button
             variant="primary"
-            href={props.demoLink}
+            href="/story"
             target="_blank"
             style={{ marginLeft: "10px" }}
           >
             <CgWebsite /> &nbsp;
-            {"View"}
+            {"Select"}
           </Button>
         )}
       </Card.Body>
