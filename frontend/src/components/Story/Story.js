@@ -24,7 +24,7 @@ function Story(props) {
             {"\n"}
             {"\n"}
             <BookCard
-                // imgPath={story}
+                picture={story}
                 content="This is the content of the story."
             />
           </Container>

@@ -9,6 +9,8 @@ import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Story from "./components/Story/Story";
+import Library from "./components/Library/Library";
+import MyStory from "./components/MyStory/MyStory";
 import {
   BrowserRouter as Router,
   Route,
@@ -44,6 +46,8 @@ function App() {
           <Route path="/ChooseStyle" element={<ChooseStyle />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/mystory" element={<MyStory />} />
           <Route path="*" element={<Navigate to="/"/>} />
           <Route path="/story" element={<Story/>} />
         </Routes>
