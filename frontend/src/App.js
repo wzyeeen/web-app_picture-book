@@ -11,6 +11,8 @@ import Resume from "./components/Resume/ResumeNew";
 import Story from "./components/Story/Story";
 import Library from "./components/Library/Library";
 import MyStory from "./components/MyStory/MyStory";
+import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
 import {
   BrowserRouter as Router,
   Route,
@@ -48,6 +50,8 @@ function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/library" element={<Library />} />
           <Route path="/mystory" element={<MyStory />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Navigate to="/"/>} />
           <Route path="/story" element={<Story/>} />
         </Routes>
