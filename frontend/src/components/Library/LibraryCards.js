@@ -10,8 +10,8 @@ function LibraryCards(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         {/* <Card.Text style={{ textAlign: "justify" }}> */}
-          {/* {props.description} */}
-           
+        {/* {props.description} */}
+
         {/* </Card.Text> */}
         {/* <Button variant="primary" href={props.ghLink} target="_blank">
           <BsGithub /> &nbsp;
@@ -22,11 +22,11 @@ function LibraryCards(props) {
 
         {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
 
-        { (
+        {(
           <Button
             variant="primary"
             href="/story"
-            target="_blank"
+            // target="_blank"
             style={{ marginLeft: "10px" }}
           >
             <CgWebsite /> &nbsp;
