@@ -6,6 +6,8 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/joy": "^5.0.0-beta.15",
+    "@mui/material": "^5.14.18",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "@react-pdf/renderer": "^2.2.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
@@ -24,6 +26,7 @@
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.42.2",
+    "styled-components": "^6.1.1",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"
   },

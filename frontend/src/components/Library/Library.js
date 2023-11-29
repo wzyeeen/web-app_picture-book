@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import LibraryCard from "./LibraryCards";
+import Input from '@mui/material/Input';
+import { AiOutlineSearch } from "react-icons/ai";
 
 import anime from "../../Assets/Styles/Anime.png"
 import oilpainting from "../../Assets/Styles/OilPainting.jpg"
@@ -11,6 +13,7 @@ import scifi from "../../Assets/Styles/scifi.jpg"
 import sketch from "../../Assets/Styles/sketch.jpg"
 
 function Library() {
+  const ariaLabel = { 'aria-label': 'description' };
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -18,6 +21,15 @@ function Library() {
         <h1 className="project-heading">
           Enjoy Others' Work <strong className="purple"> </strong>
         </h1>
+        <AiOutlineSearch style={{ color: "green", fontSize: "30px", paddingBottom: "10px" }} />
+        <Input placeholder="Search" inputProps={ariaLabel} color="success" focused />
+        {/* <TextField
+          id="filled-search"
+          label="Search field"
+          type="search"
+          variant="filled"
+        /> */}
+
         {/* <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p> */}
@@ -51,7 +63,7 @@ function Library() {
               title="Anime"
               description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
               ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+              demoLink="https://editor.soumya-jit.tech/"
             />
           </Col>
 
@@ -73,7 +85,7 @@ function Library() {
               title="Water Color"
               description="Using 'Natural Launguage Processing' for the detection of suicide-related posts and user's suicide ideation in cyberspace  and thus helping in sucide prevention."
               ghLink="https://github.com/soumyajit4419/AI_For_Social_Good"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
+            // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
             />
           </Col>
 
@@ -85,7 +97,7 @@ function Library() {
               description="Trained a CNN classifier using 'FER-2013 dataset' with Keras and tensorflow backened. The classifier sucessfully predicted the various types of emotions of human. And the highest accuracy obtained with the model was 60.1%.
               Then used Open-CV to detect the face in an image and then pass the face to the classifer to predict the emotion of a person."
               ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
-              // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
+            // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
             />
           </Col>
         </Row>
