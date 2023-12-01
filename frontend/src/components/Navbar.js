@@ -62,7 +62,7 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                to="/create"
+                to="/ChooseStyle"
                 onClick={() => updateExpanded(false)}
               >
                 <AiOutlineFolderAdd style={{ marginBottom: "2px" }} /> Create

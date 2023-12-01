@@ -30,7 +30,12 @@ function StyleCards(props) {
     //   creationDate: props.creationDate,
     //   summary: editedSummary,
     // });
-
+    if (props.handleSaveTitle) {
+      props.handleSaveTitle(editedTitle);
+    }
+    if (props.handleSaveSummary) {
+      props.handleSaveSummary(editedSummary);
+    }
     setIsEditing(false);
   };
 
@@ -50,7 +55,7 @@ function StyleCards(props) {
           )}
         </Card.Title>
         <Card.Text>
-            Authur: 
+          Authur:
           {
             props.author
           }
@@ -61,7 +66,7 @@ function StyleCards(props) {
           }
         </Card.Text>
         <Card.Text>
-            Summary: 
+          Summary:
           {isEditing ? (
             <Textarea name="Soft" placeholder="Type in here…" variant="outlined"
               value={editedSummary}

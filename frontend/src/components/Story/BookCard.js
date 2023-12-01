@@ -8,11 +8,15 @@ import story from "../../Assets/story.jpg";
 import Button from "react-bootstrap/Button";
 import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
+import { AiFillCaretRight } from "react-icons/ai";
 
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(props.content);
-  const [picture, setPicture] = useState(props.picture);
+  // const [picture, setPicture] = useState(props.picture);
+  const [isLoading, setIsLoading] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const [answer, setAnswer] = useState("");
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -24,9 +28,45 @@ function Book(props) {
     //   content: editedContent,
     //   picture: props.picture,
     // });
-
+    if (props.handleSaveCintent) {
+      props.handleSaveContent(editedContent);
+    }
     setIsEditing(false);
   };
+
+  // New function to interact with chat-gpt API
+  const getChatGPTResponse = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Replace with your API endpoint
+    const apiUrl = "/api/get-image";
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt: prompt })
+      });
+
+      if (!response.ok) {
+        throw new Error("Error fetching data from chat-gpt API");
+      }
+
+      const data = await response.json();
+      setAnswer(data.text);
+      setIsLoading(false);
+      // Handle the response data as needed
+      console.log("ChatGPT Response:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  const handleChange = (e) => {
+    setPrompt(e.target.value);
+  }
 
   return (
     <Card className="book-card-view" orientation="horizontal">
@@ -55,7 +95,7 @@ function Book(props) {
           />
         ) : (
           <Typography fontWeight="md" textColor="success.plainColor">
-            {props.content}
+            {editedContent}
           </Typography>
         )}
       </CardContent>
@@ -66,6 +106,14 @@ function Book(props) {
       >
         <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
       </Button>
+      <form className="our-form" onSubmit={getChatGPTResponse}>
+        <input className="prompt-field" type="text" onChange={handleChange} />
+        <button className="prompt-button">Go!</button>
+      </form>
+
+      {isLoading && <div className="loading-spinner"></div>}
+
+      {isLoading === false && <img src={answer} />}
     </Card>
   );
 }

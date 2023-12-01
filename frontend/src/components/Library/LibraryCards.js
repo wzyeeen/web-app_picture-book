@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { CgWebsite } from "react-icons/cg";
+import { CgWebsite, CgHeart } from "react-icons/cg";
 
 function LibraryCards(props) {
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
+  };
   return (
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
@@ -23,15 +29,20 @@ function LibraryCards(props) {
         {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
 
         {(
-          <Button
+          <><Button
+            variant={isLiked ? "danger" : "outline-danger"}
+            onClick={handleLikeClick}
+          >
+            <CgHeart /> &nbsp;{likeCount}
+          </Button><Button
             variant="primary"
             href="/story"
             // target="_blank"
             style={{ marginLeft: "10px" }}
           >
-            <CgWebsite /> &nbsp;
-            {"View"}
-          </Button>
+              <CgWebsite /> &nbsp;
+              {"View"}
+            </Button></>
         )}
       </Card.Body>
     </Card>

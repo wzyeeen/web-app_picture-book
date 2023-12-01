@@ -6,30 +6,45 @@ import StorySummaryCard from "./StorySummaryCard";
 import BookCard from "./BookCard";
 
 function Story(props) {
-    return (
-        <Container fluid className="project-section">
-          <Particle />
-          <Container>
-            <h1 className="project-heading">
-                Little Red Riding Hood <strong className="purple"> </strong>
-            </h1>
-            <StorySummaryCard
-                // imgPath={story}
-                title="Little Red Riding Hood"
-                author="John Doe"
-                creationDate="Creation Date: 01/01/2021"
-                summary="This is a summary of the story."
-            />
-            {/* 換行 */}
-            {"\n"}
-            {"\n"}
-            <BookCard
-                picture={story}
-                content="This is the content of the story."
-            />
-          </Container>
-        </Container>
-      );
+  const [title, setTitle] = React.useState("Your story title");
+  const [summary, setSummary] = React.useState("Your story summary.");
+  const [content, setContent] = React.useState("Your story content.");
+  const handleSaveTitle = (newTitle) => {
+    setTitle(newTitle);
+  };
+  const handleSaveSummary = (newSummary) => {
+    setSummary(newSummary);
+  }
+  const handleSaveContent = (newContent) => {
+    setContent(newContent);
+  }
+  return (
+    <Container fluid className="project-section">
+      <Particle />
+      <Container>
+        <h1 className="project-heading">
+          {title} <strong className="purple"> </strong>
+        </h1>
+        <StorySummaryCard
+          // imgPath={story}
+          title={title}
+          summary={summary}
+          handleSaveTitle={handleSaveTitle}
+          handleSaveSummary={handleSaveSummary}
+          author="John Doe"
+          creationDate="Creation Date: 01/01/2021"
+        />
+        {/* 換行 */}
+        {"\n"}
+        {"\n"}
+        <BookCard
+          picture={story}
+          content={content}
+          handleSaveContent={handleSaveContent}
+        />
+      </Container>
+    </Container>
+  );
 }
 export default Story;
 

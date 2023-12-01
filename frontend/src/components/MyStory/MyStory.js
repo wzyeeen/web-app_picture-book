@@ -14,6 +14,14 @@ import sketch from "../../Assets/Styles/sketch.jpg"
 
 function MyStory() {
   const ariaLabel = { 'aria-label': 'description' };
+  const MyStoryData = [
+    {
+      imgPath: sketch,
+      isBlog: false,
+      title: "Sketch",
+      description: "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase.",
+    }
+  ]
   return (
     <Container fluid className="project-section">
       <Particle />
