@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
@@ -9,8 +10,27 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import axios from 'axios';
+
 
 function SignUp() {
+
+  // Sign up API
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const getInfo = () => {
+    const data = { username: email, password: password };
+    axios.post('https://web-app-backend-r3ac.onrender.com/register', data)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  console.log(data);
+  };
+  
+  // Sign up Page
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -42,22 +62,25 @@ function SignUp() {
                 <FormLabel>Email</FormLabel>
                 <Input
                   // html input attribute
-                  name="email"
+                  id="email"
                   type="email"
                   placeholder="johndoe@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Password</FormLabel>
                 <Input
                   // html input attribute
-                  name="password"
+                  id="password"
                   type="password"
                   placeholder="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
-
-              <Button sx={{ mt: 1 /* margin top */ }} color='success'>Sign up</Button>
+              <Button sx={{ mt: 1 /* margin top */ }} color='success' onClick={getInfo}>Sign up for free</Button>
               <Typography
                 endDecorator={<Link href="/login" color='success'>Sign in</Link>}
                 fontSize="sm"
@@ -71,5 +94,8 @@ function SignUp() {
       </Container>
     </Container>
   );
+  
 }
 export default SignUp;
+
+
