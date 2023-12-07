@@ -14,7 +14,6 @@ import axios from 'axios';
 
 
 function SignUp() {
-
   // Sign up API
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

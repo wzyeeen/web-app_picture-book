@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
@@ -10,32 +12,23 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  // necessary for server-side rendering
-  // because mode is undefined on the server
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <Button
-      variant="soft"
-      onClick={() => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {mode === 'light' ? 'Turn dark' : 'Turn light'}
-    </Button>
-  );
-}
-
 function Login() {
+  // Sign in API
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const getInfo = () => {
+    const data = { username: email, password: password };
+    axios.post('https://web-app-backend-r3ac.onrender.com/login', data)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  console.log(data);
+  };
+
+  // Sign in Page
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -68,7 +61,8 @@ function Login() {
                 <FormLabel>Email</FormLabel>
                 <Input
                   // html input attribute
-                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="johndoe@email.com"
                 />
@@ -77,13 +71,14 @@ function Login() {
                 <FormLabel>Password</FormLabel>
                 <Input
                   // html input attribute
-                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="password"
                 />
               </FormControl>
 
-              <Button sx={{ mt: 1 /* margin top */ }} color='success'>Log in</Button>
+              <Button sx={{ mt: 1 /* margin top */ }} color='success' onClick={getInfo}>Log in</Button>
               <Typography
                 endDecorator={<Link href="/signup" color='success'>Sign up</Link>}
                 fontSize="sm"
