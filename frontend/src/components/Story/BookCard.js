@@ -10,6 +10,9 @@ import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight } from "react-icons/ai";
 
+import getImage from './api/get-image';
+import getText from './api/get-text';
+
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(props.content);
@@ -35,28 +38,19 @@ function Book(props) {
   };
 
   // New function to interact with chat-gpt API
-  const getChatGPTResponse = async (e) => {
+  const getChatGPTResponseImage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
     // Replace with your API endpoint
-    const apiUrl = "/api/get-image";
+    //const apiUrl = "/api/get-image";
 
     try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt: prompt })
-      });
-
-      if (!response.ok) {
+      const data = await getImage(prompt);
+      if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
         throw new Error("Error fetching data from chat-gpt API");
       }
-
-      const data = await response.json();
-      setAnswer(data.text);
+      setAnswer(data);
       setIsLoading(false);
       // Handle the response data as needed
       console.log("ChatGPT Response:", data);
@@ -64,6 +58,24 @@ function Book(props) {
       console.error("Error:", error);
     }
   };
+
+  const getChatGPTResponseText = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const data = await getText(prompt);
+      if (data == "Invalid prompt provided.") {
+        throw new Error("Error fetching data from chat-gpt API");
+      }
+      setAnswer(data);
+      setIsLoading(false);
+      // Handle the response data as needed
+      console.log("ChatGPT Response:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleChange = (e) => {
     setPrompt(e.target.value);
   }
@@ -106,7 +118,11 @@ function Book(props) {
       >
         <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
       </Button>
-      <form className="our-form" onSubmit={getChatGPTResponse}>
+      <form className="our-form" onSubmit={getChatGPTResponseImage}>
+        <input className="prompt-field" type="text" onChange={handleChange} />
+        <button className="prompt-button">Go!</button>
+      </form>
+      <form className="our-form" onSubmit={getChatGPTResponseText}>
         <input className="prompt-field" type="text" onChange={handleChange} />
         <button className="prompt-button">Go!</button>
       </form>
