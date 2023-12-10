@@ -11,9 +11,11 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"
 
 
 function SignUp() {
+  const navigate = useNavigate();
   // Sign up API
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +24,7 @@ function SignUp() {
     axios.post('https://web-app-backend-r3ac.onrender.com/register', data)
       .then(res => {
         console.log(res.data);
+        navigate("/");
       })
       .catch(error => {
         console.error('Error:', error);
