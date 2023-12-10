@@ -5,7 +5,7 @@ const openai = new OpenAI({
 });
 
 export default async function getText(Prompt) {
-    var heading = "Give two to four sentences for a story about ";
+    var heading = "Give one to two sentences for a story paragraph about ";
     if (typeof Prompt == "string") {
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",

@@ -11,10 +11,13 @@ import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
+import getImage from './api/get-image';
+import getText from './api/get-text';
+
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(props.content);
-  // const [picture, setPicture] = useState(props.picture);
+  const [picture, setPicture] = useState(props.picture);
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [answer, setAnswer] = useState("");
@@ -55,35 +58,42 @@ function Book(props) {
   }
 
   // New function to interact with chat-gpt API
-  const getChatGPTResponse = async (e) => {
+  const getChatGPTResponseImage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Replace with your API endpoint
-    const apiUrl = "/api/get-image";
-
     try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt: prompt })
-      });
-
-      if (!response.ok) {
+      const data = await getImage(prompt);
+      if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
         throw new Error("Error fetching data from chat-gpt API");
       }
-
-      const data = await response.json();
-      setAnswer(data.text);
+      setAnswer(data);
       setIsLoading(false);
       // Handle the response data as needed
-      console.log("ChatGPT Response:", data);
+      //console.log("ChatGPT Response:", data);
+      setPicture(data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
+  const getChatGPTResponseText = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const data = await getText(prompt);
+      if (data == "Invalid prompt provided.") {
+        throw new Error("Error fetching data from chat-gpt API");
+      }
+      setAnswer(data);
+      setIsLoading(false);
+      // Handle the response data as needed
+      console.log("ChatGPT Response:", data);
+      setEditedContent(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  
   const handleChange = (e) => {
     setPrompt(e.target.value);
   }
@@ -97,8 +107,8 @@ function Book(props) {
         </IconButton>
         <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px' }}>
           <img
-            src={story}
-            alt={story}
+            src={picture}
+            alt={picture}
           />
         </AspectRatio>
         <div style={{ position: 'absolute', bottom: '8px', right: '-530px', color: 'white' }}>
@@ -130,9 +140,15 @@ function Book(props) {
       >
         <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
       </Button>
-      <form className="our-form" onSubmit={getChatGPTResponse}>
+      <form className="our-form" onSubmit={getChatGPTResponseText}>
+        <label>Generate Text</label>
         <input className="prompt-field" type="text" onChange={handleChange} />
-        <Button className="prompt-button">Go!</Button>
+        <button className="prompt-button">Go!</button>
+      </form>
+      <form className="our-form" onSubmit={getChatGPTResponseImage}>
+        <label>Generate Image</label>
+        <input className="prompt-field" type="text" onChange={handleChange} />
+        <button className="prompt-button">Go!</button>
       </form>
 
       <IconButton onClick={handleNextPage} style={{ backgroundColor: 'transparent' }}>
