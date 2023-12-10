@@ -1,7 +1,7 @@
 const OpenAI = require("openai");
 const openai = new OpenAI({
-    apiKey: "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",
-    dangerouslyAllowBrowser: true 
+    apiKey: "",
+    dangerouslyAllowBrowser: true
 });
 
 export default async function getText(Prompt) {

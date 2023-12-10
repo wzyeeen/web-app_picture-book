@@ -19,13 +19,13 @@ function Login() {
   const getInfo = () => {
     const data = { username: email, password: password };
     axios.post('https://web-app-backend-r3ac.onrender.com/login', data)
-    .then(res => {
-      console.log(res.data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  console.log(data);
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    console.log(data);
   };
 
   // Sign in Page
@@ -78,7 +78,21 @@ function Login() {
                 />
               </FormControl>
 
-              <Button sx={{ mt: 1 /* margin top */ }} color='success' onClick={getInfo}>Log in</Button>
+              <Button
+                as={Link}
+                to="/"
+                sx={{ mt: 1 /* margin top */ }}
+                color='success'
+                onClick={(event) => {
+                  getInfo();
+                  if (typeof Link === 'function') {
+                    Link.handleClick(event);
+                  }
+                }}
+              >
+                Log in
+              </Button>
+
               <Typography
                 endDecorator={<Link href="/signup" color='success'>Sign up</Link>}
                 fontSize="sm"

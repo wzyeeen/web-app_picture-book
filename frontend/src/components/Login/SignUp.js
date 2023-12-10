@@ -20,15 +20,15 @@ function SignUp() {
   const getInfo = () => {
     const data = { username: email, password: password };
     axios.post('https://web-app-backend-r3ac.onrender.com/register', data)
-    .then(res => {
-      console.log(res.data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  console.log(data);
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    console.log(data);
   };
-  
+
   // Sign up Page
   return (
     <Container fluid className="project-section">
@@ -81,7 +81,7 @@ function SignUp() {
               </FormControl>
               <Button sx={{ mt: 1 /* margin top */ }} color='success' onClick={getInfo}>Sign up for free</Button>
               <Typography
-                endDecorator={<Link href="/login" color='success'>Sign in</Link>}
+                endDecorator={<Link href="/" color='success'>Sign in</Link>}
                 fontSize="sm"
                 sx={{ alignSelf: 'center' }}
               >
@@ -93,7 +93,7 @@ function SignUp() {
       </Container>
     </Container>
   );
-  
+
 }
 export default SignUp;
 

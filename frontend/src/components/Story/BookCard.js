@@ -5,13 +5,11 @@ import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
 import story from "../../Assets/story.jpg";
-import back from "../../Assets/back.png";
-import next from "../../Assets/next.png";
 import Button from "react-bootstrap/Button";
 import IconButton from '@mui/joy/IconButton';
 import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
-import { AiFillCaretRight } from "react-icons/ai";
+import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +39,7 @@ function Book(props) {
   const handlePreviousPage = () => {
     if (page > 1) {
       let newPage = page - 1;
-      setEditedContent('Your story content ' + newPage);
+      setEditedContent('Your story content of page ' + newPage);
       setPage(newPage);
       setAnswer(answer);
     }
@@ -50,7 +48,7 @@ function Book(props) {
   const handleNextPage = () => {
     if (page < 8) {
       let newPage = page + 1;
-      setEditedContent('Your story content ' + newPage);
+      setEditedContent('Your story content of page ' + newPage);
       setPage(newPage);
       setAnswer(answer);
     }
@@ -93,8 +91,9 @@ function Book(props) {
   return (
     <Card className="book-card-view" orientation="horizontal">
       <CardOverflow>
-        <IconButton onClick={handlePreviousPage} style={{backgroundColor: 'transparent'}}>
-          <img src={back} alt={back} width='70px' height='70px' />
+        <IconButton onClick={handlePreviousPage} style={{ backgroundColor: 'transparent' }}>
+          <AiFillCaretLeft size={40} color="green" />
+          {/* <img src={back} alt={back} width='70px' height='70px' /> */}
         </IconButton>
         <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px' }}>
           <img
@@ -136,8 +135,9 @@ function Book(props) {
         <Button className="prompt-button">Go!</Button>
       </form>
 
-      <IconButton onClick={handleNextPage} style={{backgroundColor: 'transparent'}}>
-        <img src={next} alt={next} width='70px' height='70px' />
+      <IconButton onClick={handleNextPage} style={{ backgroundColor: 'transparent' }}>
+        <AiFillCaretRight size={40} color="green" />
+        {/* <img src={next} alt={next} width='70px' height='70px' color="green" /> */}
       </IconButton>
 
       {isLoading && <div className="loading-spinner"></div>}
