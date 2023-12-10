@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Container } from "react-bootstrap";
 import Particle from "../Particle";
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import FormControl from '@mui/joy/FormControl';
@@ -11,8 +11,10 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import { useNavigate } from "react-router-dom"
 
 function Login() {
+  const navigate = useNavigate();
   // Sign in API
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +23,7 @@ function Login() {
     axios.post('https://web-app-backend-r3ac.onrender.com/login', data)
       .then(res => {
         console.log(res.data);
+        navigate("/");
       })
       .catch(error => {
         console.error('Error:', error);
