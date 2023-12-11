@@ -43,7 +43,8 @@ function StyleCards(props) {
     <Card className="book-card-view">
       <Card.Body>
         <Card.Title>
-          {isEditing ? (
+          Three Little Pigs
+          {/* {isEditing ? (
             <Input
               type="text"
               variant="outlined"
@@ -52,7 +53,7 @@ function StyleCards(props) {
             />
           ) : (
             props.title
-          )}
+          )} */}
         </Card.Title>
         <Card.Text>
           Authur:
@@ -61,18 +62,18 @@ function StyleCards(props) {
           }
         </Card.Text>
         <Card.Text>
-          Create Date: 2023/12/20
+          Create Date: 2023/12/11
         </Card.Text>
         <Card.Text>
-          Summary:
-          {isEditing ? (
+          Summary: Three Little Pigs
+          {/* {isEditing ? (
             <Textarea name="Soft" placeholder="Type in here…" variant="outlined"
               value={editedSummary}
               onChange={(e) => setEditedSummary(e.target.value)}
             />
           ) : (
             props.summary
-          )}
+          )} */}
         </Card.Text>
         <Button
           variant={isLiked ? "danger" : "outline-danger"}
@@ -80,13 +81,13 @@ function StyleCards(props) {
         >
           <CgHeart /> &nbsp; {likeCount}
         </Button>
-        <Button
+        {/* <Button
           variant="primary"
           onClick={isEditing ? handleSaveClick : handleEditClick}
           style={{ marginLeft: "10px" }}
         >
           <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
-        </Button>
+        </Button> */}
       </Card.Body>
     </Card>
   );

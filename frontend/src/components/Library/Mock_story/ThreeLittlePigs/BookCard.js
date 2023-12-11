@@ -4,15 +4,12 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import story from "../../Assets/story.jpg";
 import Button from "react-bootstrap/Button";
 import IconButton from '@mui/joy/IconButton';
 import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
-import getImage from './api/get-image';
-import getText from './api/get-text';
 
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
@@ -57,47 +54,6 @@ function Book(props) {
     }
   }
 
-  // New function to interact with chat-gpt API
-  const getChatGPTResponseImage = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const data = await getImage(prompt);
-      if (data == "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1722.jpg") {
-        throw new Error("Error fetching data from chat-gpt API");
-      }
-      setAnswer(data);
-      setIsLoading(false);
-      // Handle the response data as needed
-      console.log("ChatGPT Response:", data);
-      setPicture(data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const getChatGPTResponseText = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const data = await getText(prompt);
-      if (data == "Invalid prompt provided.") {
-        throw new Error("Error fetching data from chat-gpt API");
-      }
-      setAnswer(data);
-      setIsLoading(false);
-      // Handle the response data as needed
-      console.log("ChatGPT Response:", data);
-      setEditedContent(data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const handleChange = (e) => {
-    setPrompt(e.target.value);
-  }
-
   return (
     <Card className="book-card-view" orientation="horizontal">
       <CardOverflow>
@@ -117,19 +73,6 @@ function Book(props) {
           </Typography>
         </div>
       </CardOverflow>
-      <CardContent>
-        <form className="our-form" onSubmit={getChatGPTResponseText}>
-          <label>Generate Text</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
-        </form>
-        <form className="our-form" onSubmit={getChatGPTResponseImage}>
-          <label>Generate Image</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
-        </form>
-
-      </CardContent>
       <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {isEditing ? (
           <Textarea
@@ -142,17 +85,17 @@ function Book(props) {
           />
         ) : (
           <Typography fontWeight="md" textColor="success.plainColor">
-            {editedContent}
+            Once upon a time, three little pigs named Max, Bella, and Oliver lived in a small village. They decided to build houses, with Max choosing straw, Bella opting for sticks, and Oliver going for bricks.
           </Typography>
         )}
       </CardContent>
-      <Button
+      {/* <Button
         variant="primary"
         onClick={isEditing ? handleSaveClick : handleEditClick}
         style={{ marginLeft: "10px", marginBottom: "600px" }}
       >
         <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
-      </Button>
+      </Button> */}
 
       <IconButton onClick={handleNextPage} style={{ backgroundColor: 'transparent' }}>
         <AiFillCaretRight size={40} color="green" />

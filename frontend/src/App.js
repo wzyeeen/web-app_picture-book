@@ -13,6 +13,8 @@ import Library from "./components/Library/Library";
 import MyStory from "./components/MyStory/MyStory";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
+import ThreeLittlePigs from "./components/Library/Mock_story/ThreeLittlePigs/ThreeLittlePigs";
+import Corgi from "./components/MyStory/Mock_story/ThreeLittlePigs/Corgi";
 import {
   BrowserRouter as Router,
   Route,
@@ -52,8 +54,10 @@ function App() {
           <Route path="/mystory" element={<MyStory />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-          <Route path="/story" element={<Story/>} />
+          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/story" element={<Story />} />
+          <Route path="/corgi" element={<Corgi />} />
+          <Route path="/littlethreepigs" element={<ThreeLittlePigs />} />
         </Routes>
         <Footer />
       </div>

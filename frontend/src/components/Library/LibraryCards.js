@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite, CgHeart } from "react-icons/cg";
+import { BsGithub } from "react-icons/bs";
 
 function LibraryCards(props) {
   const [isLiked, setIsLiked] = useState(false);
@@ -23,8 +24,6 @@ function LibraryCards(props) {
           <BsGithub /> &nbsp;
           {props.isBlog ? "Blog" : "GitHub"}
         </Button> */}
-        {"\n"}
-        {"\n"}
 
         {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
 
@@ -36,7 +35,7 @@ function LibraryCards(props) {
             <CgHeart /> &nbsp;{likeCount}
           </Button><Button
             variant="primary"
-            href="/story"
+            href={props.ghLink}
             // target="_blank"
             style={{ marginLeft: "10px" }}
           >

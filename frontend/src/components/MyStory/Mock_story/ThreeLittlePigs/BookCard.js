@@ -4,15 +4,14 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import story from "../../Assets/story.jpg";
 import Button from "react-bootstrap/Button";
 import IconButton from '@mui/joy/IconButton';
 import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
-import getImage from './api/get-image';
-import getText from './api/get-text';
+import getImage from './../../api/get-image';
+import getText from './../../api/get-image';
 
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
