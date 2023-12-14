@@ -4,7 +4,6 @@ import myImg from "../../Assets/intro_img.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
-  AiOutlineTwitter,
   AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -21,7 +20,7 @@ function Home2() {
             <p className="home-about-body">
               PixieTales is a creative haven where users collaborate seamlessly with AI to craft enchanting picture books. 
               <br />
-              <br />With an intuitive interface and a palette of AI-powered tools, you can bring their stories to life through vibrant illustrations, personalized characters, and captivating narratives. 🤷‍♂️
+              <br />With an intuitive interface and a palette of AI-powered tools, you can bring their stories to life through vibrant illustrations, personalized characters, and captivating narratives. 🥳
               {/* <i>
                 <b className="purple"> C++, Javascript and Go. </b>
               </i>
@@ -37,7 +36,7 @@ function Home2() {
               {/* </i> */}
               <br />
               <br />
-              Join ImagineTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 <br />
+              Join PixieTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 <br />
               <i>
                 <b className="purple">
                   {""}
@@ -58,14 +57,14 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND Authur ON</h1>
+            <h1></h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Feel free to <span className="purple">connect </span>with us
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/soumyajit4419"
+                  href="https://github.com/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -75,17 +74,7 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://twitter.com/Soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
+                  href="https://www.linkedin.com/in/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -95,7 +84,7 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.instagram.com/soumyajit4419"
+                  href="https://www.instagram.com/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"

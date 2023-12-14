@@ -7,7 +7,6 @@ import Projects from "./components/Projects/Projects";
 import Create from "./components/Create/Create";
 import ChooseStyle from "./components/Create/ChooseStyle";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
 import Story from "./components/Story/Story";
 import Library from "./components/Library/Library";
 import MyStory from "./components/MyStory/MyStory";
@@ -49,7 +48,6 @@ function App() {
           <Route path="/create" element={<Create />} />
           <Route path="/ChooseStyle" element={<ChooseStyle />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="/library" element={<Library />} />
           <Route path="/mystory" element={<MyStory />} />
           <Route path="/login" element={<Login />} />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../Assets/title3.png";
+import logo from "../Assets/title.png";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import {
@@ -36,7 +36,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" style={{ maxWidth: '200%' }} alt="brand" />
+          PixieTales.ai
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
