@@ -13,12 +13,12 @@ import Link from '@mui/joy/Link';
 import { signIn } from './api/getInfo';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
   const getInfo = async () => {
     try {
-      const responseData = await signIn(email, password);
+      const responseData = await signIn(user, password);
       console.log(responseData);
       localStorage.setItem('access_token', responseData.access_token);
       localStorage.setItem('refresh_token', responseData.refresh_token);
@@ -57,22 +57,21 @@ function Login() {
                 <Typography level="body-sm">Login to continue.</Typography>
               </div>
               <FormControl>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <Input
                   // html input attribute
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="youremail@email.com"
+                  value={user}
+                  onChange={(e) => setUser(e.target.value)}
+                  placeholder="username"
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Password</FormLabel>
                 <Input
                   // html input attribute
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password"
                   placeholder="password"
                 />
               </FormControl>

@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgHeart, CgPen } from "react-icons/cg";
-import Textarea from '@mui/joy/Textarea';
 import Input from '@mui/joy/Input';
 
 function StyleCards(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
-
   const [editedTitle, setEditedTitle] = useState(props.title);
-  const [editedSummary, setEditedSummary] = useState(props.summary);
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
@@ -33,16 +30,13 @@ function StyleCards(props) {
     if (props.handleSaveTitle) {
       props.handleSaveTitle(editedTitle);
     }
-    if (props.handleSaveSummary) {
-      props.handleSaveSummary(editedSummary);
-    }
     setIsEditing(false);
   };
 
   return (
     <Card className="book-card-view">
       <Card.Body>
-        <Card.Title>
+        <Card.Title className="green">
           {isEditing ? (
             <Input
               type="text"
@@ -55,31 +49,17 @@ function StyleCards(props) {
           )}
         </Card.Title>
         <Card.Text>
-          Authur:
-          {
-            props.author
-          }
+          Authur: {props.author}
         </Card.Text>
         <Card.Text>
-          Create Date: 2023/12/20
+          Create Date: {props.createdDate}
         </Card.Text>
-        <Card.Text>
-          Summary:
-          {isEditing ? (
-            <Textarea name="Soft" placeholder="Type in here…" variant="outlined"
-              value={editedSummary}
-              onChange={(e) => setEditedSummary(e.target.value)}
-            />
-          ) : (
-            props.summary
-          )}
-        </Card.Text>
-        <Button
+        {/* <Button
           variant={isLiked ? "danger" : "outline-danger"}
           onClick={handleLikeClick}
         >
           <CgHeart /> &nbsp; {likeCount}
-        </Button>
+        </Button> */}
         <Button
           variant="primary"
           onClick={isEditing ? handleSaveClick : handleEditClick}

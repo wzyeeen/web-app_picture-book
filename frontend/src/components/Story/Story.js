@@ -6,15 +6,14 @@ import StorySummaryCard from "./StorySummaryCard";
 import BookCard from "./BookCard";
 
 function Story(props) {
-  const [title, setTitle] = React.useState("Your story title");
-  const [summary, setSummary] = React.useState("Your story summary.");
+  let date = new Date();
+  const currentUser = localStorage.getItem('username');
+  const [title, setTitle] = React.useState('Your story title');
   const [content, setContent] = React.useState("Your story content.");
   const handleSaveTitle = (newTitle) => {
     setTitle(newTitle);
   };
-  const handleSaveSummary = (newSummary) => {
-    setSummary(newSummary);
-  }
+
   const handleSaveContent = (newContent) => {
     setContent(newContent);
   }
@@ -23,18 +22,15 @@ function Story(props) {
       <Particle />
       <Container>
         <h1 className="project-heading">
-          {title} <strong className="purple"> </strong>
+          Create Your Story <strong className="purple"> </strong>
         </h1>
         <StorySummaryCard
           // imgPath={story}
-          title={title}
-          summary={summary}
+          title={title} 
           handleSaveTitle={handleSaveTitle}
-          handleSaveSummary={handleSaveSummary}
-          author="John Doe"
-          creationDate="Creation Date: 01/01/2021"
+          author={currentUser}
+          createdDate={date.toLocaleDateString()}
         />
-        {/* 換行 */}
         {"\n"}
         {"\n"}
         <BookCard

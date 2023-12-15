@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const signIn = async (email, password) => {
+export const signIn = async (username, password) => {
   try {
-    const data = { username: email, password: password };
+    const data = { username: username, password: password };
     const response = await axios.post('https://web-app-backend-r3ac.onrender.com/login', data);
     return response.data;
   } catch (error) {
@@ -13,14 +13,14 @@ export const signIn = async (email, password) => {
   }
 };
 
-export const signUp = async (email, password) => {
+export const signUp = async (username, password) => {
     try {
-      const data = { username: email, password: password };
+      const data = { username: username, password: password };
       const response = await axios.post('https://web-app-backend-r3ac.onrender.com/register', data);
       return response.data;
     } catch (error) {
       if (error) {
-        alert('This email is already registered!');
+        alert('This user is already registered!');
       }
       throw error;
     }

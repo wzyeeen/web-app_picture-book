@@ -14,12 +14,12 @@ import { signUp } from './api/getInfo';
 
 
 function SignUp() {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
   const getInfo = async () => {
     try {
-      const responseData = await signUp(email, password);
+      const responseData = await signUp(user, password);
       console.log(responseData);
       window.open('/', '_self');
     } catch (error) {
@@ -58,19 +58,16 @@ function SignUp() {
                 <FormLabel>Email</FormLabel>
                 <Input
                   // html input attribute
-                  id="email"
-                  type="email"
-                  placeholder="abc@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="username"
+                  value={user}
+                  onChange={(e) => setUser(e.target.value)}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel>Password</FormLabel>
                 <Input
                   // html input attribute
-                  id="password"
-                  type="password"
+                  type='password'
                   placeholder="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
