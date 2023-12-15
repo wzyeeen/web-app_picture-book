@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
@@ -11,6 +12,7 @@ import {
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
+import axios from "axios";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -23,7 +25,22 @@ function NavBar() {
       updateNavbar(false);
     }
   }
+  let login = localStorage.getItem("access_token");
+  const logout = () => {
+    var access_token = "";
+    access_token = localStorage.getItem("access_token");
+    axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`,},})
+      .then(res => {
+        console.log(res.data);
+        
+      })
+      .catch(error => {
 
+        console.error('Error:', error);
+      });
+      // setLogin(true);
+      localStorage.clear();
+  }
   window.addEventListener("scroll", scrollHandler);
 
   return (
@@ -99,11 +116,19 @@ function NavBar() {
             </Nav.Item> */}
 
             <Nav.Item className="fork-btn">
-              <Button
+              {login === null ? <Button
                 href="/login"
                 className="fork-btn-inner"
+                // onClick={() => setLogin(false)}
               >Login/Signup
               </Button>
+              :
+              <Button
+                href="/"
+                onClick={logout}
+                className="fork-btn-inner"
+              >Logout
+              </Button>}
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>

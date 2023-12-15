@@ -24,8 +24,9 @@ function Login() {
       .then(res => {
         console.log(res.data);
         navigate("/");
-        // localStorage.setItem('access_token', res.data.access_token);
-        // localStorage.setItem('refresh_token', res.data.refresh_token);
+        localStorage.setItem('access_token', res.data.access_token);
+        localStorage.setItem('refresh_token', res.data.refresh_token);
+        window.open("/","_self");
       })
       .catch(error => {
         console.error('Error:', error);
