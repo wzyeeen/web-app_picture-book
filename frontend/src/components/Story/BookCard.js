@@ -4,7 +4,6 @@ import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import story from "../../Assets/story.jpg";
 import Button from "react-bootstrap/Button";
 import IconButton from '@mui/joy/IconButton';
 import { CgPen } from "react-icons/cg";

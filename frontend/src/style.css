@@ -14,7 +14,7 @@ html {
   --imp-text-color: #316639;
 }
 
-.purple {
+.green {
   color: var(--imp-text-color) !important;
 }
 
@@ -339,7 +339,7 @@ button:focus {
 .home-about-social {
   text-align: center !important;
   padding-top: 25px;
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 .home-about-social-links {

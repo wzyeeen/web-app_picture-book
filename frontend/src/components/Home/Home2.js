@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/intro_img.svg";
+import Img from "../../Assets/intro_img.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
@@ -15,51 +15,31 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-             <span className="purple"> INTRODUCTION </span>
+             <span className="green"> INTRODUCTION </span>
             </h1>
             <p className="home-about-body">
               PixieTales is a creative haven where users collaborate seamlessly with AI to craft enchanting picture books. 
               <br />
               <br />With an intuitive interface and a palette of AI-powered tools, you can bring their stories to life through vibrant illustrations, personalized characters, and captivating narratives. 🥳
-              {/* <i>
-                <b className="purple"> C++, Javascript and Go. </b>
-              </i>
               <br />
               <br />
-              My field of Interest's are building new &nbsp;
-              <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
-                <b className="purple">
-                  Blockchain.
-                </b> */}
-              {/* </i> */}
-              <br />
-              <br />
-              Join PixieTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟📖 <br />
-              <i>
-                <b className="purple">
-                  {""}
-                  
-                </b>
-              </i>
+              Join PixieTales today and unlock the door to a world where creativity knows no bounds. Let your imagination soar as you create, collaborate, and share magical stories with the world! 🌟 <br />
               &nbsp;
               <i>
-                <b className="purple">#PixieTales #CreateWithAI #PictureBookMagic</b>
+                <b className="green">#PixieTales #CreateWithAI #PictureBookMagic</b>
               </i>
             </p>
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img src={Img} className="img-fluid" alt="pic" />
             </Tilt>
           </Col>
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1></h1>
             <p>
-              Feel free to <span className="purple">connect </span>with us
+              <span className="green">Connect us</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
