@@ -30,7 +30,7 @@ function Home2() {
               </i>
             </p>
           </Col>
-          <Col md={4} className="myAvtar">
+          <Col md={4} className="Img">
             <Tilt>
               <img src={Img} className="img-fluid" alt="pic" />
             </Tilt>

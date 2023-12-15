@@ -305,13 +305,13 @@ button:focus {
   }
 }
 
-.myAvtar {
+.Img {
   justify-content: center !important;
-  padding-top: 9em !important;
+  padding-top: 13em !important;
 }
 
 @media (max-width: 767px) {
-  .myAvtar {
+  .Img {
     padding-top: 2em !important;
     padding-bottom: 2em !important;
   }
@@ -405,7 +405,7 @@ button:focus {
   background-color: #316639;
   bottom: 0 !important;
   padding-top: 10px !important;
-  padding-bottom: 8px !important ;
+  padding-bottom: 8px !important;
 }
 .footer-copywright {
   text-align: center !important;

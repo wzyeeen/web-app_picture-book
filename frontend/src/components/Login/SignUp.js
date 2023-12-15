@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Container } from "react-bootstrap";
 import Particle from "../Particle";
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import FormControl from '@mui/joy/FormControl';
@@ -10,29 +10,23 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
-import axios from 'axios';
-import { useNavigate } from "react-router-dom"
+import { signUp } from './api/getInfo';
 
 
 function SignUp() {
-  const navigate = useNavigate();
-  // Sign up API
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const getInfo = () => {
-    const data = { username: email, password: password };
-    axios.post('https://web-app-backend-r3ac.onrender.com/register', data)
-      .then(res => {
-        console.log(res.data);
-        navigate("/");
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    console.log(data);
+
+  const getInfo = async () => {
+    try {
+      const responseData = await signUp(email, password);
+      console.log(responseData);
+      window.open('/', '_self');
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
-  // Sign up Page
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -66,7 +60,7 @@ function SignUp() {
                   // html input attribute
                   id="email"
                   type="email"
-                  placeholder="johndoe@email.com"
+                  placeholder="abc@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
