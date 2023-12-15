@@ -26,6 +26,7 @@ function NavBar() {
     }
   }
   let login = localStorage.getItem("access_token");
+  
   const logout = () => {
     var access_token = "";
     access_token = localStorage.getItem("access_token");
