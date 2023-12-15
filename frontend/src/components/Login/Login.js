@@ -23,7 +23,7 @@ function Login() {
     axios.post('https://web-app-backend-r3ac.onrender.com/login', data)
       .then(res => {
         console.log(res.data);
-        // navigate("/");
+        
         localStorage.setItem('access_token', res.data.access_token);
         localStorage.setItem('refresh_token', res.data.refresh_token);
         window.open("/","_self");
