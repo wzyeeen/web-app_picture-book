@@ -24,7 +24,7 @@ function Login() {
       localStorage.setItem('refresh_token', responseData.refresh_token);
       window.open('/', '_self');
     } catch (error) {
-      console.error('Error:', error);
+      console.log(error);
     }
   };
 
@@ -54,7 +54,7 @@ function Login() {
                 <Typography level="h4" component="h1">
                   <b>Welcome!</b>
                 </Typography>
-                <Typography level="body-sm">Sign in to continue.</Typography>
+                <Typography level="body-sm">Login to continue.</Typography>
               </div>
               <FormControl>
                 <FormLabel>Email</FormLabel>
@@ -89,7 +89,7 @@ function Login() {
                   }
                 }}
               >
-                Log in
+                Login
               </Button>
 
               <Typography
