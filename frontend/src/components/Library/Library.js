@@ -20,6 +20,7 @@ import pigs from "../../Assets/Story/three_little_pig.png"
 function Library() {
   const ariaLabel = { 'aria-label': 'description' };
   const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState(null);
   useEffect(() => {
     axios
       .get("https://web-app-backend-r3ac.onrender.com/book")
@@ -31,7 +32,10 @@ function Library() {
         console.log(err);
       });
   }, []);
-  
+  const filteredBooks = books.filter((book) => {
+    return search !== null && book.book_name.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -40,18 +44,29 @@ function Library() {
           Enjoy Others' Work <strong className="purple"> </strong>
         </h1>
         <AiOutlineSearch style={{ color: "green", fontSize: "30px", paddingBottom: "10px" }} />
-        <Input placeholder="Search" inputProps={ariaLabel} color="success" focused />
-        {/* <TextField
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-        /> */}
-
-        {/* <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
-        </p> */}
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Input
+          placeholder="Search"
+          inputProps={ariaLabel}
+          color="success"
+          focused
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Row style={{ justifyContent: 'center', paddingBottom: '10px' }}>
+          {filteredBooks.map((book) => (
+            <Col key={book.id} md={4} className="project-card">
+              <LibraryCard
+                id={book.id}
+                imgPath={book.pages[0].image_url} // Assuming the first page image represents the book
+                isBlog={false}
+                title={book.book_name}
+                thumb={parseInt(book.thumb)}
+              // Include other properties you want to display
+              />
+            </Col>
+          ))}
+        </Row>
+        {/* <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <LibraryCard
               imgPath={pigs}
@@ -85,7 +100,7 @@ function Library() {
               />
             </Col>
           ))}
-        </Row>
+        </Row> */}
       </Container>
     </Container>
   );

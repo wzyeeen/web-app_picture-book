@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import MyStoryCards from "./MyStoryCards";
 import Input from '@mui/material/Input';
 import { AiOutlineSearch } from "react-icons/ai";
+import axios from "axios";
 
 import anime from "../../Assets/Styles/Anime.png"
 import oilpainting from "../../Assets/Styles/OilPainting.jpg"
@@ -18,6 +19,24 @@ import corgi from "../../Assets/Story/corgi.png"
 
 function MyStory() {
   const ariaLabel = { 'aria-label': 'description' };
+  const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState(null);
+  const access_token = localStorage.getItem("access_token");
+
+  useEffect(() => {
+    axios
+      .get("https://web-app-backend-r3ac.onrender.com/user/book", { headers: { Authorization: `Bearer ${access_token}`, } })
+      .then((res) => {
+        setBooks(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [access_token]);
+  const filteredBooks = books.filter((book) => {
+    return search !== null && book.book_name.toLowerCase().includes(search.toLowerCase());
+  });
   const MyStoryData = [
     {
       imgPath: sketch,
@@ -34,7 +53,28 @@ function MyStory() {
           My Work <strong className="purple"> </strong>
         </h1>
         <AiOutlineSearch style={{ color: "green", fontSize: "30px", paddingBottom: "10px" }} />
-        <Input placeholder="Search" inputProps={ariaLabel} color="success" focused />
+        <Input
+          placeholder="Search"
+          inputProps={ariaLabel}
+          color="success"
+          focused
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Row style={{ justifyContent: 'center', paddingBottom: '10px' }}>
+          {filteredBooks.map((book) => (
+            <Col key={book.id} md={4} className="project-card">
+              <MyStoryCards
+                id={book.id}
+                imgPath={book.pages[0].image_url} // Assuming the first page image represents the book
+                isBlog={false}
+                title={book.book_name}
+                thumb={parseInt(book.thumb)}
+              // Include other properties you want to display
+              />
+            </Col>
+          ))}
+        </Row>
         {/* <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p> */}
