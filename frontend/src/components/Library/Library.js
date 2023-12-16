@@ -20,7 +20,7 @@ import pigs from "../../Assets/Story/three_little_pig.png"
 function Library() {
   const ariaLabel = { 'aria-label': 'description' };
   const [books, setBooks] = useState([]);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState('');
   useEffect(() => {
     axios
       .get("https://web-app-backend-r3ac.onrender.com/book")
