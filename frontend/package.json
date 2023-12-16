@@ -27,8 +27,7 @@
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.42.2",
     "styled-components": "^6.1.1",
-    "typewriter-effect": "^2.18.2",
-    "web-vitals": "^2.1.4"
+    "typewriter-effect": "^2.18.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "web-vitals": "^3.5.0"
   }
 }

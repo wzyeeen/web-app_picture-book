@@ -1,16 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite, CgHeart } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import axios from 'axios';
 
 function LibraryCards(props) {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(props.thumb);
+  const handleFirstRender = useRef(false);
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
     setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
+  
+  useEffect(() => {
+    const access_token = localStorage.getItem("access_token");
+    if (handleFirstRender.current) {
+      if (isLiked) {
+        axios.post("https://web-app-backend-r3ac.onrender.com/thumb/" + props.id, null, {headers: {Authorization: `Bearer ${access_token}`,},})
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => {
+            console.error('Error:', error)
+          });
+      } else {
+        axios.post("https://web-app-backend-r3ac.onrender.com/cancelthumb/" + props.id, null, {headers: {Authorization: `Bearer ${access_token}`,},})
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => {
+            console.error('Error:', error)
+          });
+      }
+      return;
+    }
+    handleFirstRender.current = true;
+  }, [isLiked]);
+
   return (
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
@@ -35,7 +63,7 @@ function LibraryCards(props) {
             <CgHeart /> &nbsp;{likeCount}
           </Button><Button
             variant="primary"
-            href={props.ghLink}
+            href='/story'
             // target="_blank"
             style={{ marginLeft: "10px" }}
           >
