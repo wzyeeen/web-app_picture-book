@@ -9,6 +9,7 @@ import IconButton from '@mui/joy/IconButton';
 import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+import Box from '@mui/joy/Box';
 
 import getImage from './api/get-image';
 import getText from './api/get-text';
@@ -116,35 +117,24 @@ function Book(props) {
           </Typography>
         </div>
       </CardOverflow>
-      <CardContent>
-        <form className="our-form" onSubmit={getChatGPTResponseText}>
-          <label>Generate Text</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
-        </form>
-        <form className="our-form" onSubmit={getChatGPTResponseImage}>
-          <label>Generate Image</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
-        </form>
-
-      </CardContent>
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        {isEditing ? (
-          <Textarea
-            name="Soft"
-            marginBottom="100px"
-            placeholder="Type in here…"
-            variant="outlined"
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
-          />
-        ) : (
-          <Typography fontWeight="md" textColor="success.plainColor">
-            {editedContent}
-          </Typography>
-        )}
-      </CardContent>
+      <Box sx={{ border: '1px solid #ccc', height: '600px', width: '500px', borderRadius: '8px', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <CardContent sx={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
+          {isEditing ? (
+            <Textarea
+              name="Soft"
+              marginBottom="100px"
+              placeholder="Type in here…"
+              variant="outlined"
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+            />
+          ) : (
+            <Typography fontWeight="md" textColor="success.plainColor">
+              {editedContent}
+            </Typography>
+          )}
+        </CardContent>
+      </Box>
       <Button
         variant="primary"
         onClick={isEditing ? handleSaveClick : handleEditClick}
@@ -161,7 +151,18 @@ function Book(props) {
       {isLoading && <div className="loading-spinner"></div>}
 
       {/* {isLoading === false && <img src={answer} />} */}
-
+      <CardContent>
+        <form className="our-form" onSubmit={getChatGPTResponseText}>
+          <label>Generate Text</label>
+          <input className="prompt-field" type="text" onChange={handleChange} />
+          <button className="prompt-button">Go!</button>
+        </form>
+        <form className="our-form" onSubmit={getChatGPTResponseImage}>
+          <label>Generate Image</label>
+          <input className="prompt-field" type="text" onChange={handleChange} />
+          <button className="prompt-button">Go!</button>
+        </form>
+      </CardContent>
     </Card>
   );
 }
