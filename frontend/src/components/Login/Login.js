@@ -22,6 +22,7 @@ function Login() {
       console.log(responseData);
       localStorage.setItem('access_token', responseData.access_token);
       localStorage.setItem('refresh_token', responseData.refresh_token);
+      localStorage.setItem('username', user);
       window.open('/', '_self');
     } catch (error) {
       console.log(error);
