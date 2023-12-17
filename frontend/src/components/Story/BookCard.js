@@ -30,9 +30,27 @@ function Book(props) {
       let newPage = page - 1;
       let newPageId = Number(localStorage.getItem('page_id')) - 1;
       localStorage.setItem('page_id', newPageId.toString());
-      setEditedContent('Your story content of page ' + newPage);
+      axios
+      .get('https://web-app-backend-r3ac.onrender.com/page/' + newPageId, null, 
+      // {
+      //   headers: {
+      //     'Authorization': `Bearer ${access_token}`
+      //   }}
+        )
+      .then((res) => {
+        console.log(res.data);
+        setEditedContent( res.data["text"]);
       setPage(newPage);
       setAnswer(answer);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+      // setEditedContent('Your story content of page ' + res.data["text"]);
+      // setPage(newPage);
+      // setAnswer(answer);
     }
   }
 
@@ -41,9 +59,25 @@ function Book(props) {
       let newPage = page + 1;
       let newPageId = Number(localStorage.getItem('page_id')) + 1;
       localStorage.setItem('page_id', newPageId.toString());
-      setEditedContent('Your story content of page ' + newPage);
+      axios
+      .get('https://web-app-backend-r3ac.onrender.com/page/' + newPageId, null, 
+      // {
+      //   headers: {
+      //     'Authorization': `Bearer ${access_token}`
+      //   }}
+        )
+      .then((res) => {
+        console.log(res.data);
+        setEditedContent( res.data["text"]);
       setPage(newPage);
       setAnswer(answer);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      // setEditedContent('Your story content of page ' + newPage);
+      // setPage(newPage);
+      // setAnswer(answer);
     }
   }
 
