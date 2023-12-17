@@ -35,7 +35,6 @@ function StyleCards(props) {
         }})
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem('book_id', res.data.id);
         localStorage.setItem('page_id', res.data.pages[0].id);
       })
       .catch((err) => {

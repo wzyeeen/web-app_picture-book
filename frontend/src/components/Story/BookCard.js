@@ -25,6 +25,28 @@ function Book(props) {
   const [page, setPage] = useState(1);
   const page_id = localStorage.getItem('page_id');
 
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      let newPage = page - 1;
+      let newPageId = Number(localStorage.getItem('page_id')) - 1;
+      localStorage.setItem('page_id', newPageId.toString());
+      setEditedContent('Your story content of page ' + newPage);
+      setPage(newPage);
+      setAnswer(answer);
+    }
+  }
+
+  const handleNextPage = () => {
+    if (page < 8) {
+      let newPage = page + 1;
+      let newPageId = Number(localStorage.getItem('page_id')) + 1;
+      localStorage.setItem('page_id', newPageId.toString());
+      setEditedContent('Your story content of page ' + newPage);
+      setPage(newPage);
+      setAnswer(answer);
+    }
+  }
+
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
@@ -49,28 +71,6 @@ function Book(props) {
         console.log(err);
       });
   };
-
-  const handlePreviousPage = () => {
-    if (page > 1) {
-      let newPage = page - 1;
-      // page_id = Number(page_id) - 1; 
-      // page_id.toString();
-      setEditedContent('Your story content of page ' + newPage);
-      setPage(newPage);
-      setAnswer(answer);
-    }
-  }
-
-  const handleNextPage = () => {
-    if (page < 8) {
-      let newPage = page + 1;
-      // page_id = Number(page_id) + 1; 
-      // page_id.toString();
-      setEditedContent('Your story content of page ' + newPage);
-      setPage(newPage);
-      setAnswer(answer);
-    }
-  }
 
   // New function to interact with chat-gpt API
   const getChatGPTResponseImage = async (e) => {
