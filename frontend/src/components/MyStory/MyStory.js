@@ -20,12 +20,13 @@ import corgi from "../../Assets/Story/corgi.png"
 function MyStory() {
   const ariaLabel = { 'aria-label': 'description' };
   const [books, setBooks] = useState([]);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState('');
   const access_token = localStorage.getItem("access_token");
+  const currentUser = localStorage.getItem('username');
 
   useEffect(() => {
     axios
-      .get("https://web-app-backend-r3ac.onrender.com/user/book", { headers: { Authorization: `Bearer ${access_token}`, } })
+      .get("https://web-app-backend-r3ac.onrender.com/book", { headers: { Authorization: `Bearer ${access_token}`, } })
       .then((res) => {
         setBooks(res.data);
         console.log(res.data);
@@ -70,6 +71,7 @@ function MyStory() {
                 isBlog={false}
                 title={book.book_name}
                 thumb={parseInt(book.thumb)}
+                ghLink={"/ViewMyStory/"+book.id}
               // Include other properties you want to display
               />
             </Col>
