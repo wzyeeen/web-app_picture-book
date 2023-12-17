@@ -10,6 +10,7 @@ import { CgPen } from "react-icons/cg";
 import Textarea from '@mui/joy/Textarea';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import Box from '@mui/joy/Box';
+import axios from 'axios';
 
 import getImage from './api/get-image';
 import getText from './api/get-text';
@@ -22,26 +23,38 @@ function Book(props) {
   const [prompt, setPrompt] = useState("");
   const [answer, setAnswer] = useState("");
   const [page, setPage] = useState(1);
+  const page_id = localStorage.getItem('page_id');
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
 
   const handleSaveClick = () => {
-    // Save the edited content to the appropriate location (e.g., API or local state)
-    // props.onSave({
-    //   content: editedContent,
-    //   picture: props.picture,
-    // });
     if (props.handleSaveCintent) {
       props.handleSaveContent(editedContent);
     }
     setIsEditing(false);
+    var access_token = "";
+      access_token = localStorage.getItem("access_token");
+      const data = { text: editedContent, image_url: "./Story/corgi.png" };
+      axios
+      .put('https://web-app-backend-r3ac.onrender.com/page/' + page_id, data, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`
+        }})
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handlePreviousPage = () => {
     if (page > 1) {
       let newPage = page - 1;
+      // page_id = Number(page_id) - 1; 
+      // page_id.toString();
       setEditedContent('Your story content of page ' + newPage);
       setPage(newPage);
       setAnswer(answer);
@@ -51,6 +64,8 @@ function Book(props) {
   const handleNextPage = () => {
     if (page < 8) {
       let newPage = page + 1;
+      // page_id = Number(page_id) + 1; 
+      // page_id.toString();
       setEditedContent('Your story content of page ' + newPage);
       setPage(newPage);
       setAnswer(answer);

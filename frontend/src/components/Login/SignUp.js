@@ -21,6 +21,8 @@ function SignUp() {
     try {
       const responseData = await signUp(user, password);
       console.log(responseData);
+      localStorage.setItem('username', user);
+      alert('Welcome! Please login to continue.');
       window.open('/', '_self');
     } catch (error) {
       console.error('Error:', error);

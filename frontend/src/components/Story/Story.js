@@ -25,7 +25,6 @@ function Story(props) {
           Create Your Story <strong className="purple"> </strong>
         </h1>
         <StorySummaryCard
-          // imgPath={story}
           title={title} 
           handleSaveTitle={handleSaveTitle}
           author={currentUser}

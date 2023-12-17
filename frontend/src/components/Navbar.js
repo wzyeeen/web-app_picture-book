@@ -31,7 +31,7 @@ function NavBar() {
   const logout = () => {
     var access_token = "";
     access_token = localStorage.getItem("access_token");
-    axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`,},})
+    axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`}})
       .then(res => {
         console.log(res.data);
         

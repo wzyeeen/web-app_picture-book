@@ -3,34 +3,44 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgHeart, CgPen } from "react-icons/cg";
 import Input from '@mui/joy/Input';
+import axios from 'axios';
 
 function StyleCards(props) {
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  // const [isLiked, setIsLiked] = useState(false);
+  // const [likeCount, setLikeCount] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(props.title);
 
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked);
-    setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
-  };
+  // const handleLikeClick = () => {
+  //   setIsLiked(!isLiked);
+  //   setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
+  // };
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
 
   const handleSaveClick = () => {
-    // 在這裡將編輯的內容保存到適當的地方，例如 API 或本地狀態
-    // props.onSave({
-    //   title: editedTitle,
-    //   author: props.author,
-    //   creationDate: props.creationDate,
-    //   summary: editedSummary,
-    // });
     if (props.handleSaveTitle) {
       props.handleSaveTitle(editedTitle);
     }
     setIsEditing(false);
+      var access_token = "";
+      access_token = localStorage.getItem("access_token");
+      const data = { book_name: editedTitle, tag: "anime" };
+      axios
+      .post('https://web-app-backend-r3ac.onrender.com/user/book', data, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`
+        }})
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem('book_id', res.data.id);
+        localStorage.setItem('page_id', res.data.pages[0].id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -49,7 +59,7 @@ function StyleCards(props) {
           )}
         </Card.Title>
         <Card.Text>
-          Authur: {props.author}
+          Author: {props.author}
         </Card.Text>
         <Card.Text>
           Create Date: {props.createdDate}
