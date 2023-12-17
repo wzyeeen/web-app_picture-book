@@ -34,13 +34,14 @@ function NavBar() {
     axios.post('https://web-app-backend-r3ac.onrender.com/logout', null,{ headers: {Authorization : `Bearer ${access_token}`}})
       .then(res => {
         console.log(res.data);
-        
+        window.open('/', '_self');
       })
       .catch(error => {
 
         console.error('Error:', error);
       });
       // setLogin(true);
+      // window.open('/', '_blank');
       localStorage.clear();
   }
   window.addEventListener("scroll", scrollHandler);
@@ -118,8 +119,8 @@ function NavBar() {
               </Button>
               :
               <Button
-                href="/"
                 onClick={logout}
+                // href="/"
                 className="fork-btn-inner"
               >Logout
               </Button>}
