@@ -57,6 +57,8 @@ export default function ViewMyStory() {
             handleSaveTitle={handleSaveTitle}
             author={author}
             createdDate={bookInfo.create_time}
+            likes={bookInfo.thumb}
+            bookId={bookInfo.id}
           />
           {"\n"}
           {"\n"}

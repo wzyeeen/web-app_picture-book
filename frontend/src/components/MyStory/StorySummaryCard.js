@@ -3,16 +3,23 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgHeart, CgPen } from "react-icons/cg";
 import Input from '@mui/joy/Input';
+import { likeAdd, likeCancel } from "./api/get-book-info";
 
 function StyleCards(props) {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(Number(props.likes));
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(props.title);
 
   const handleLikeClick = () => {
+    if(isLiked){// liked
+      likeCancel(props.bookId);
+      setLikeCount(likeCount - 1);
+    }else{// not liked
+      likeAdd(props.bookId);
+      setLikeCount(likeCount + 1);
+    }
     setIsLiked(!isLiked);
-    setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
 
   const handleEditClick = () => {
@@ -54,12 +61,12 @@ function StyleCards(props) {
         <Card.Text>
           Create Date: {props.createdDate}
         </Card.Text>
-        {/* <Button
+        { <Button
           variant={isLiked ? "danger" : "outline-danger"}
           onClick={handleLikeClick}
         >
           <CgHeart /> &nbsp; {likeCount}
-        </Button> */}
+        </Button> }
         <Button
           variant="primary"
           onClick={isEditing ? handleSaveClick : handleEditClick}

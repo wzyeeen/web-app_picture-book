@@ -26,7 +26,7 @@ function MyStory() {
 
   useEffect(() => {
     axios
-      .get("https://web-app-backend-r3ac.onrender.com/book", { headers: { Authorization: `Bearer ${access_token}`, } })
+      .get("https://web-app-backend-r3ac.onrender.com/user/book", { headers: { Authorization: `Bearer ${access_token}`, } })
       .then((res) => {
         setBooks(res.data);
         console.log(res.data);
@@ -70,7 +70,7 @@ function MyStory() {
                 imgPath={book.pages[0].image_url} // Assuming the first page image represents the book
                 isBlog={false}
                 title={book.book_name}
-                thumb={parseInt(book.thumb)}
+                thumb={Number(book.thumb)}
                 ghLink={"/ViewMyStory/"+book.id}
               // Include other properties you want to display
               />

@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite, CgHeart } from "react-icons/cg";
+import { likeAdd, likeCancel } from "./api/get-book-info";
 
 function MyStoryCards(props) {
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(props.thumb);
   const handleLikeClick = () => {
+    if(isLiked){// liked
+      likeCancel(props.bookId);
+      setLikeCount(likeCount - 1);
+    }else{// not liked
+      likeAdd(props.bookId);
+      setLikeCount(likeCount + 1);
+    }
     setIsLiked(!isLiked);
-    setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
   return (
     <Card className="project-card-view">

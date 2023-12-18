@@ -13,12 +13,13 @@ import Box from '@mui/joy/Box';
 
 import getImage from './api/get-image';
 import getText from './api/get-text';
+import { updatePage } from './api/get-book-info';
 
 function Book(props) {
-  console.log(props);
+  //console.log(props);
   const pageFind = (pageNum) => {
     return props.pages.find(item => item.page_number === pageNum);
-  }
+  };
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(pageFind(1).text);
@@ -63,6 +64,17 @@ function Book(props) {
       setAnswer(answer);
     }
   }
+
+  const handleSavePage = async () => {
+    console.log("handleThisPageSave " + pageFind(page).id);
+    console.log("Content:" + editedContent);
+    console.log("img url:" + picture);
+    setIsLoading(true);
+    updatePage(pageFind(page).id, editedContent, picture);
+    setIsLoading(false);
+    console.log("replace page complete!");
+    
+  };
 
   // New function to interact with chat-gpt API
   const getChatGPTResponseImage = async (e) => {
@@ -169,6 +181,7 @@ function Book(props) {
           <input className="prompt-field" type="text" onChange={handleChange} />
           <button className="prompt-button">Go!</button>
         </form>
+        <button onClick={handleSavePage}>Click to apply page changes</button>
       </CardContent>
     </Card>
   );
