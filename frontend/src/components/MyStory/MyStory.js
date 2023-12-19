@@ -76,11 +76,11 @@ function MyStory() {
             <Col key={book.id} md={4} className="project-card">
               <MyStoryCards
                 id={book.id}
-                imgPath={findPagePicture(book,1)} // Assuming the first page image represents the book
+                imgPath={findPagePicture(book, 1)} // Assuming the first page image represents the book
                 isBlog={false}
                 title={book.book_name}
                 thumb={Number(book.thumb)}
-                ghLink={"/ViewMyStory/"+book.id}
+                ghLink={"/ViewMyStory/" + book.id}
               // Include other properties you want to display
               />
             </Col>
@@ -89,7 +89,7 @@ function MyStory() {
         {/* <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p> */}
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        {/* <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <MyStoryCards
               imgPath={corgi}
@@ -122,7 +122,7 @@ function MyStory() {
               demoLink="https://editor.soumya-jit.tech/"
             />
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Container>
   );
