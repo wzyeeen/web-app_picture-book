@@ -37,23 +37,37 @@ function Book(props) {
     setIsEditing(false);
   };
 
+  const findPageText = (n) => {
+    for (let p = 1; p <= pages.length; p++) {
+      if (pages[p - 1].page_number == n) {
+        return pages[p - 1].text;
+      }
+    }
+  }
+
   React.useEffect(() => {
     axios
       .get("https://web-app-backend-r3ac.onrender.com/book/" + props.id)
       .then((res) => {
         console.log(res.data);
         setPages(res.data['pages']);
-        setPageText(res.data['pages'][0].text);
+        /*setPageText(res.data['pages'][0].text);*/
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  React.useEffect(() => {
+    let firstPageText = findPageText(1);
+    setPageText(firstPageText);
+  }, [pages]);
+
   const handlePreviousPage = () => {
     if (pageNum > 1) {
       let newPageNum = pageNum - 1;
-      setPageText(pages[newPageNum - 1].text);
+      let newText = findPageText(newPageNum);
+      setPageText(newText);
       setPageNum(newPageNum);
     }
   }
@@ -61,7 +75,8 @@ function Book(props) {
   const handleNextPage = () => {
     if (pageNum < 8) {
       let newPageNum = pageNum + 1;
-      setPageText(pages[newPageNum - 1].text);
+      let newText = findPageText(newPageNum);
+      setPageText(newText);
       setPageNum(newPageNum);
     }
   }
