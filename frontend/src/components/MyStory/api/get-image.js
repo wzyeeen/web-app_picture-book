@@ -5,10 +5,11 @@ const openai = new OpenAI({
 });
 
 export default async function getImage(Prompt) {
+    const style = localStorage.getItem("style");
     if (typeof Prompt == "string") {
         const response = await openai.images.generate({
             model: "dall-e-2",
-            prompt: `A image of a ${Prompt}`,
+            prompt: `A ${style} image of ${Prompt}`,
             n: 1,
             size: "512x512",
         })
