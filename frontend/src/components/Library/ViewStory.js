@@ -46,7 +46,7 @@ function Story(props) {
             console.log(res.data);
             handleSaveTitle(res.data['book_name']);
             handleSaveAuthor(res.data['user']['username']);
-            handleSaveCreateDate(res.data['create_time'].slice(0, 10));
+            handleSaveCreateDate(res.data['create_time'].split('T')[0]);
             handleSaveThumbs(res.data['thumb']);
             setPages(res.data['pages']);
           })

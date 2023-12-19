@@ -56,7 +56,7 @@ export default function ViewMyStory() {
             title={bookInfo.book_name} 
             handleSaveTitle={handleSaveTitle}
             author={author}
-            createdDate={bookInfo.create_time}
+            createdDate={bookInfo.create_time.split('T')[0]}
             likes={bookInfo.thumb}
             bookId={bookInfo.id}
           />
