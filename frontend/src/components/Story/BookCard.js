@@ -14,7 +14,7 @@ import axios from 'axios';
 
 import getImage from './api/get-image';
 import getText from './api/get-text';
-
+import story from '../../Assets/story.jpg'
 function Book(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(props.content);
@@ -24,6 +24,20 @@ function Book(props) {
   const [answer, setAnswer] = useState("");
   const [page, setPage] = useState(1);
   const page_id = localStorage.getItem('page_id');
+
+  // function downloadImage(url, filename) {
+  //   fetch(url)
+  //   .then(response => response.blob())
+  //   .then(blob => {
+  //       const a = document.createElement('a');
+  //       a.href = URL.createObjectURL(blob);
+  //       a.download = filename;
+  //       document.body.appendChild(a);
+  //       a.click();
+  //       document.body.removeChild(a);
+  //   })
+  //   .catch(error => console.error('Error downloading image:', error));
+  // }
 
   const handlePreviousPage = () => {
     if (page > 1) {
@@ -40,17 +54,13 @@ function Book(props) {
       .then((res) => {
         console.log(res.data);
         setEditedContent( res.data["text"]);
+        setPicture(res.data["image_url"]);
       setPage(newPage);
       setAnswer(answer);
       })
-      .catch((err) => {
+      .catch((err) => { 
         console.log(err);
       });
-
-
-      // setEditedContent('Your story content of page ' + res.data["text"]);
-      // setPage(newPage);
-      // setAnswer(answer);
     }
   }
 
@@ -69,6 +79,9 @@ function Book(props) {
       .then((res) => {
         console.log(res.data);
         setEditedContent( res.data["text"]);
+        // var img = "";
+        // const img = require(res.data["image_url"]);
+        setPicture(res.data["image_url"]);
       setPage(newPage);
       setAnswer(answer);
       })
@@ -92,7 +105,12 @@ function Book(props) {
     setIsEditing(false);
     var access_token = "";
       access_token = localStorage.getItem("access_token");
-      const data = { text: editedContent, image_url: "./Story/corgi.png" };
+      // var url = "";
+      // url = localStorage.getItem("img_url");
+      // const pathSegments = url.split('=');
+      // const lastSegment = pathSegments.pop();
+      // downloadImage(url,  lastSegment+".jpg")
+      const data = { text: editedContent, image_url: picture };
       axios
       .put('https://web-app-backend-r3ac.onrender.com/page/' + page_id, data, {
         headers: {
@@ -157,7 +175,7 @@ function Book(props) {
         <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px' }}>
           <img
             src={picture}
-            alt={picture}
+            alt={"This wiil be your image content."}
           />
         </AspectRatio>
         <div style={{ position: 'absolute', bottom: '8px', right: '-530px', color: 'white' }}>
