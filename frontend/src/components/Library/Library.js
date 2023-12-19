@@ -35,6 +35,15 @@ function Library() {
   const filteredBooks = books.filter((book) => {
     return search !== null && book.book_name.toLowerCase().includes(search.toLowerCase());
   });
+  
+  const findPagePicture = (book, n) => {
+    for (let p = 1; p <= book.pages.length; p++) {
+      if (book.pages[p - 1].page_number == n) {
+        return book.pages[p - 1].image_url;
+      }
+    }
+  }
+ 
 
   return (
     <Container fluid className="project-section">
@@ -57,7 +66,7 @@ function Library() {
             <Col key={book.id} md={4} className="project-card">
               <LibraryCard
                 id={book.id}
-                imgPath={book.pages[0].image_url} // Assuming the first page image represents the book
+                imgPath={findPagePicture(book,1)} // Assuming the first page image represents the book
                 isBlog={false}
                 title={book.book_name}
                 thumb={parseInt(book.thumb)}
