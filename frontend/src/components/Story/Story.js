@@ -9,7 +9,7 @@ function Story(props) {
   let date = new Date();
   const currentUser = localStorage.getItem('username');
   const [title, setTitle] = React.useState('Your story title');
-  const [content, setContent] = React.useState("Your story content.");
+  const [content, setContent] = React.useState("Your story content");
   const handleSaveTitle = (newTitle) => {
     setTitle(newTitle);
   };
@@ -36,6 +36,7 @@ function Story(props) {
           picture={story}
           content={content}
           handleSaveContent={handleSaveContent}
+          style={{ fontFamily: "Raleway" }}
         />
       </Container>
     </Container>

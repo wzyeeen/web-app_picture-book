@@ -106,7 +106,7 @@ function Book(props) {
           <AiFillCaretLeft size={40} color="green" />
           {/* <img src={back} alt={back} width='70px' height='70px' /> */}
         </IconButton>
-        <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px' }}>
+        <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px', borderRadius: '8px' }}>
           <img
             src={picture}
             alt={picture}
@@ -118,7 +118,7 @@ function Book(props) {
           </Typography>
         </div>
       </CardOverflow>
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {isEditing ? (
           <Textarea
             name="Soft"
@@ -129,7 +129,7 @@ function Book(props) {
             onChange={(e) => setEditedContent(e.target.value)}
           />
         ) : (
-          <Typography fontWeight="md" textColor="success.plainColor">
+          <Typography fontWeight="md" textColor="success.plainColor" style={{fontFamily: "Raleway"}}>
             {pageText}
           </Typography>
         )}

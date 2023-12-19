@@ -44,7 +44,7 @@ export default function ViewMyStory() {
   return (
     <div>
       {IsLoading ?
-      (<p>Loading...</p>) : (
+      (<p></p>) : (
       <Container fluid className="project-section">
         <Particle />
         <Container>

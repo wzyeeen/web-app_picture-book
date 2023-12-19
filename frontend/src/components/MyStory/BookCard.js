@@ -121,22 +121,22 @@ function Book(props) {
     <Card className="book-card-view" orientation="horizontal">
       <CardOverflow>
         <IconButton onClick={handlePreviousPage} style={{ backgroundColor: 'transparent' }}>
-          <AiFillCaretLeft size={40} color="green" />
+          <AiFillCaretLeft size={20} color="green" />
           {/* <img src={back} alt={back} width='70px' height='70px' /> */}
         </IconButton>
-        <AspectRatio ratio="1" sx={{ width: 600, margin: '0 16px' }}>
+        <AspectRatio ratio="1" sx={{ width: 600, margin: '0px', borderRadius: '8px' }}>
           <img
             src={picture}
             alt={picture}
           />
         </AspectRatio>
-        <div style={{ position: 'absolute', bottom: '8px', right: '-530px', color: 'white' }}>
+        <div style={{ position: 'absolute', bottom: '16px', right: '-570px', color: 'white' }}>
           <Typography variant="caption" fontWeight="md" textColor="success.plainColor">
-            {page} {/* Here you might dynamically calculate or use another way to get the page number */}
+            {page} / 8 {/* Here you might dynamically calculate or use another way to get the page number */}
           </Typography>
         </div>
       </CardOverflow>
-      <Box sx={{ border: '1px solid #ccc', height: '600px', width: '500px', borderRadius: '8px', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ border: '1px solid #ccc', height: '600px', width: '400px', borderRadius: '8px', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <CardContent sx={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
           {isEditing ? (
             <Textarea
@@ -148,22 +148,23 @@ function Book(props) {
               onChange={(e) => setEditedContent(e.target.value)}
             />
           ) : (
-            <Typography fontWeight="md" textColor="success.plainColor">
+            <Typography fontWeight="md" textColor="success.plainColor" style={{fontFamily: "Raleway"}}>
               {editedContent}
             </Typography>
           )}
         </CardContent>
+          <Button
+            variant="primary"
+            onClick={isEditing ? handleSaveClick : handleEditClick}
+            style={{ marginLeft: "10px", marginTop: "10px" }}
+          >
+            <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
+          </Button>
       </Box>
-      <Button
-        variant="primary"
-        onClick={isEditing ? handleSaveClick : handleEditClick}
-        style={{ marginLeft: "10px", marginBottom: "600px" }}
-      >
-        <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
-      </Button>
+      
 
       <IconButton onClick={handleNextPage} style={{ backgroundColor: 'transparent' }}>
-        <AiFillCaretRight size={40} color="green" />
+        <AiFillCaretRight size={20} color="green" />
         {/* <img src={next} alt={next} width='70px' height='70px' color="green" /> */}
       </IconButton>
 
@@ -171,17 +172,18 @@ function Book(props) {
 
       {/* {isLoading === false && <img src={answer} />} */}
       <CardContent>
-        <form className="our-form" onSubmit={getChatGPTResponseText}>
-          <label>Generate Text</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
+      <form onSubmit={getChatGPTResponseImage} style={{ marginBottom: '10px' }}>
+          <label style={{ display: 'block', marginBottom: '10px', fontSize: '16px', fontFamily: "Raleway" }}>Generate Image</label>
+          <input className="prompt-field" type="text" onChange={handleChange} style={{ padding: '3px', fontSize: '14px', marginBottom: '10px', width: '100%', borderRadius: '8px', borderStyle: 'solid', borderWidth: '1px'}} />
+          <button className="prompt-button" style={{ padding: '5px', fontSize: '12px', backgroundColor: '#ffe7a4', color: 'green', border: 'solid', cursor: 'pointer', borderRadius: '8px', borderWidth: '1px', fontFamily: "Raleway" }}>Go!</button>
         </form>
-        <form className="our-form" onSubmit={getChatGPTResponseImage}>
-          <label>Generate Image</label>
-          <input className="prompt-field" type="text" onChange={handleChange} />
-          <button className="prompt-button">Go!</button>
+        <br />
+        <form className="our-form" onSubmit={getChatGPTResponseText} style={{ marginBottom: '250px' }}>
+          <label style={{ display: 'block', marginBottom: '10px', fontSize: '16px', fontFamily: "Raleway" }}>Generate Text</label>
+          <input className="prompt-field" type="text" onChange={handleChange} style={{ padding: '3px', fontSize: '14px', marginBottom: '10px', width: '100%', borderRadius: '8px', borderStyle: 'solid', borderWidth: '1px' }} />
+          <button className="prompt-button" style={{ padding: '5px', fontSize: '12px', backgroundColor: '#ffe7a4', color: 'green', border: 'solid', cursor: 'pointer', borderRadius: '8px', borderWidth: '1px', fontFamily: "Raleway" }}>Go!</button>
         </form>
-        <button onClick={handleSavePage}>Click to apply page changes</button>
+        <button onClick={handleSavePage} style={{ padding: '10px', fontSize: '14px', backgroundColor: 'green', color: 'white', border: 'solid', cursor: 'pointer', borderRadius: '12px', fontFamily: "Raleway" }}>Click to apply page changes</button>
       </CardContent>
     </Card>
   );
