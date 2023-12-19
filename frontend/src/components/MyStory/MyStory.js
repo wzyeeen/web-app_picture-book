@@ -46,6 +46,15 @@ function MyStory() {
       description: "Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase.",
     }
   ]
+
+  const findPagePicture = (book, n) => {
+    for (let p = 1; p <= book.pages.length; p++) {
+      if (book.pages[p - 1].page_number == n) {
+        return book.pages[p - 1].image_url;
+      }
+    }
+  }
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -67,7 +76,7 @@ function MyStory() {
             <Col key={book.id} md={4} className="project-card">
               <MyStoryCards
                 id={book.id}
-                imgPath={book.pages[0].image_url} // Assuming the first page image represents the book
+                imgPath={findPagePicture(book,1)} // Assuming the first page image represents the book
                 isBlog={false}
                 title={book.book_name}
                 thumb={Number(book.thumb)}
