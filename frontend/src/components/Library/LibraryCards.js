@@ -26,13 +26,15 @@ function LibraryCards(props) {
             console.error('Error:', error)
           });
       } else {
-        axios.post("https://web-app-backend-r3ac.onrender.com/cancelthumb/" + props.id, null, {headers: {Authorization: `Bearer ${access_token}`,},})
-          .then(res => {
-            console.log(res.data);
-          })
-          .catch(error => {
-            console.error('Error:', error)
-          });
+        if (likeCount > 0) {
+          axios.post("https://web-app-backend-r3ac.onrender.com/cancelthumb/" + props.id, null, {headers: {Authorization: `Bearer ${access_token}`,},})
+            .then(res => {
+              console.log(res.data);
+            })
+            .catch(error => {
+              console.error('Error:', error)
+            });
+        }
       }
       return;
     }
@@ -61,11 +63,12 @@ function LibraryCards(props) {
             onClick={handleLikeClick}
           >
             <CgHeart /> &nbsp;{likeCount}
-          </Button><Button
+          </Button>
+          <Button
             variant="primary"
-            href='/story'
             // target="_blank"
             style={{ marginLeft: "10px" }}
+            href={"/viewstory/" + props.id}
           >
               <CgWebsite /> &nbsp;
               {"View"}
@@ -75,4 +78,5 @@ function LibraryCards(props) {
     </Card>
   );
 }
+
 export default LibraryCards;
