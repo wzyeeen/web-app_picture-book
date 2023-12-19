@@ -83,7 +83,7 @@ function StyleCards(props) {
     <Card className="book-card-view">
       <Card.Body>
         <Card.Title>
-          {props.title}
+          {/* {props.title} */}
           {/* {isEditing ? (
             <Input
               type="text"
