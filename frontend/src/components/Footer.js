@@ -10,7 +10,7 @@ function Footer() {
   let date = new Date();
   let year = date.getFullYear();
   return (
-    <Container fluid className="footer" style={{bottom: 0, width: '100%' }}>
+    <Container fluid className="footer" style={{width: '100%' }}>
       <Row>
         <Col md="4" className="footer-copywright">
           <h3>Group I</h3>

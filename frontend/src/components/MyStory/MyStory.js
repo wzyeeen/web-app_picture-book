@@ -71,7 +71,7 @@ function MyStory() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Row style={{ justifyContent: 'center', paddingBottom: '10px' }}>
+        <Row style={{ justifyContent: 'center', paddingBottom: '40px' }}>
           {filteredBooks.map((book) => (
             <Col key={book.id} md={4} className="project-card">
               <MyStoryCards
