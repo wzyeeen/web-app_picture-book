@@ -37,6 +37,14 @@ function Book(props) {
     setIsEditing(false);
   };
 
+  const findPagePicture = (n) => {
+    for (let p = 1; p <= pages.length; p++) {
+      if (pages[p - 1].page_number == n) {
+        return pages[p - 1].image_url;
+      }
+    }
+  }
+
   const findPageText = (n) => {
     for (let p = 1; p <= pages.length; p++) {
       if (pages[p - 1].page_number == n) {
@@ -51,6 +59,7 @@ function Book(props) {
       .then((res) => {
         console.log(res.data);
         setPages(res.data['pages']);
+        // setPicture(res.data['image_url'])
         /*setPageText(res.data['pages'][0].text);*/
       })
       .catch((err) => {
@@ -63,11 +72,18 @@ function Book(props) {
     setPageText(firstPageText);
   }, [pages]);
 
+  React.useEffect(() => {
+    let firstPagePicture = findPagePicture(1);
+    setPicture(firstPagePicture);
+  }, [pages]);
+
   const handlePreviousPage = () => {
     if (pageNum > 1) {
       let newPageNum = pageNum - 1;
       let newText = findPageText(newPageNum);
+      let newPicture = findPagePicture(newPageNum);
       setPageText(newText);
+      setPicture(newPicture);
       setPageNum(newPageNum);
     }
   }
@@ -76,7 +92,9 @@ function Book(props) {
     if (pageNum < 8) {
       let newPageNum = pageNum + 1;
       let newText = findPageText(newPageNum);
+      let newPicture = findPagePicture(newPageNum);
       setPageText(newText);
+      setPicture(newPicture);
       setPageNum(newPageNum);
     }
   }
