@@ -96,7 +96,7 @@ function StyleCards(props) {
           )} */}
         </Card.Title>
         <Card.Text>
-          Authur:
+          Author:
           {
             props.author
           }
