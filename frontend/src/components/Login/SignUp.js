@@ -47,6 +47,7 @@ function SignUp() {
                 gap: 2,
                 borderRadius: 'sm',
                 boxShadow: 'md',
+                marginBottom: '350px'
               }}
               variant="outlined"
             >
@@ -57,7 +58,7 @@ function SignUp() {
                 <Typography level="body-sm">Sign up to continue.</Typography>
               </div>
               <FormControl>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Username</FormLabel>
                 <Input
                   // html input attribute
                   placeholder="username"

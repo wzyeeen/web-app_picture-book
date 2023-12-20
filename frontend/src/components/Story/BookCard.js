@@ -103,25 +103,28 @@ function Book(props) {
       props.handleSaveContent(editedContent);
     }
     setIsEditing(false);
+  };
+
+  const handleSavePage = () => {
     var access_token = "";
-      access_token = localStorage.getItem("access_token");
-      // var url = "";
-      // url = localStorage.getItem("img_url");
-      // const pathSegments = url.split('=');
-      // const lastSegment = pathSegments.pop();
-      // downloadImage(url,  lastSegment+".jpg")
-      const data = { text: editedContent, image_url: picture };
-      axios
-      .put('https://web-app-backend-r3ac.onrender.com/page/' + page_id, data, {
-        headers: {
-          'Authorization': `Bearer ${access_token}`
-        }})
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    access_token = localStorage.getItem("access_token");
+    // var url = "";
+    // url = localStorage.getItem("img_url");
+    // const pathSegments = url.split('=');
+    // const lastSegment = pathSegments.pop();
+    // downloadImage(url,  lastSegment+".jpg")
+    const data = { text: editedContent, image_url: picture };
+    axios
+    .put('https://web-app-backend-r3ac.onrender.com/page/' + page_id, data, {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      }})
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   // New function to interact with chat-gpt API
@@ -226,11 +229,12 @@ function Book(props) {
           <button className="prompt-button" style={{ padding: '5px', fontSize: '12px', backgroundColor: '#ffe7a4', color: 'green', border: 'solid', cursor: 'pointer', borderRadius: '8px', borderWidth: '1px', fontFamily: "Raleway" }}>Go!</button>
         </form>
         <br />
-        <form className="our-form" onSubmit={getChatGPTResponseText} style={{ marginBottom: '20px' }}>
+        <form className="our-form" onSubmit={getChatGPTResponseText} style={{ marginBottom: '250px' }}>
           <label style={{ display: 'block', marginBottom: '10px', fontSize: '16px', fontFamily: "Raleway" }}>Generate Text</label>
           <input className="prompt-field" type="text" onChange={handleChange} style={{ padding: '3px', fontSize: '14px', marginBottom: '10px', width: '100%', borderRadius: '8px', borderStyle: 'solid', borderWidth: '1px' }} />
           <button className="prompt-button" style={{ padding: '5px', fontSize: '12px', backgroundColor: '#ffe7a4', color: 'green', border: 'solid', cursor: 'pointer', borderRadius: '8px', borderWidth: '1px', fontFamily: "Raleway" }}>Go!</button>
         </form>
+        <button onClick={handleSavePage} style={{ padding: '10px', fontSize: '14px', backgroundColor: 'green', color: 'white', border: 'solid', cursor: 'pointer', borderRadius: '12px', fontFamily: "Raleway" }}>Click to apply page changes</button>
       </CardContent>
     </Card>
   );
