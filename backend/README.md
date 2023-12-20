@@ -1,6 +1,36 @@
-# API
-
+# How to use after git clone
 ### CODE_URL :　https://github.com/jesse970146/Webapp
+## 安裝必要安裝檔
+```bash
+pip install -r requirements.txt
+```
+
+## 資料庫
+資料庫預設是SQLlite，如果要用其他資料庫像是MySQL或是PostgreSQL，需額外創建一.env檔，新增參數**DATABASE_URL**
+
+## app.py 設定
+使用者的驗證使用JWT，需在.env檔內新增參數**JWT_SECRET_KEY**，參數為一串數字
+
+## 設定完後應該就可使用 ```flask run``` 開啟後端
+
+## TIPS
+1. 可以先開個虛擬環境再使用
+2. .flaskenv檔設定
+**FLASK_DEBUG**參數可以改成1，這樣就可以一直開著後端，然後再改code的時候可以同步更新，不用一直重覆```flask run```
+3. 資料庫內Table修改
+
+	有使用flask migrate，若models資料夾內的檔案有做改變可以按順序打入下列指令
+	```bash
+	flask db init
+	flask db migrate
+	falsk db upgrade
+	```
+4. 已寫好Dockerfile，之後要deploy可以進行使用及修改
+5. models資料夾內為設定table的py檔
+6. recources資料夾內為設定api的py檔
+7. schema.py為控制api在接收與回傳中request的內容以及response的內容
+
+# API
 
 ## 用戶部分
 
