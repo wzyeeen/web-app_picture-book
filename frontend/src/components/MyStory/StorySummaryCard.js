@@ -72,7 +72,7 @@ function StyleCards(props) {
           onClick={isEditing ? handleSaveClick : handleEditClick}
           style={{ marginLeft: "10px" }}
         >
-          <CgPen /> &nbsp; {isEditing ? "Save" : "Edit"}
+          <CgPen /> &nbsp; {isEditing ? "Save" : "Edit title"}
         </Button>
       </Card.Body>
     </Card>
