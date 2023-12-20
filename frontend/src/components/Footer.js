@@ -13,7 +13,7 @@ function Footer() {
     <Container fluid className="footer" style={{width: '100%' }}>
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Group I</h3>
+          <h3>IM5068@National Taiwan University</h3>
         </Col>
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year}</h3>
