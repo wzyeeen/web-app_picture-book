@@ -1,12 +1,35 @@
 # Web app: Picture book project
-## 簡述
-參考連結：1. https://storybird.com 2. https://storybird.ai/
-* 透過拖拉的方式來拼湊圖庫裡的資源製作繪本或電子書
-* 製作完後可分享給他人
-## 期末要求
-* 請製作一個以「繪本」為主題的網站
-    * 繪本可以是真實的，紙本、電子、網站
-    * 可以是虛擬的，也就是沒有這本繪本，是一個mockup示意圖
-* 需要有前後端
-* 網站功能、使用框架、程式語言等不限
-* 網站需要能方便遷移或是能讓學弟妹繼承修改，也就是能直接用你的程式碼直接在另一處重建
+## Description
+This project is a web application that allows users to create picture books or e-books by enter prompts to Chat-GPT.
+## Frontend Installation
+1. Frontend Installation:
+```bash
+npm install
+```
+2. Add your OpenAI API Key to 
+- MyStory\api\get-text.js
+- MyStory\api\get-image.js
+- Story\api\get-text.js
+- Story\api\get-image.js
+
+3. In the frontend directory, run: 
+```bash
+npm start
+```
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The page will reload if you make edits.
+
+## Backend Installation
+For backend installation, please click [here](https://github.com/wzyeeen/web-app_picture-book/blob/main/backend/README.md).
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-4.png)
+## Reference：
+1. [Storybird](https://storybird.com)
+2. [Storybird AI](https://storybird.ai/)
+
+
+
